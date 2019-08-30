@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animation using JS</title>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="conatiner">
+    <div id="box" class="box">
+      BOX
+    </div>
+  </div>
+
+  <script>
+    const element = document.getElementById('box');
+    const player = element.animate([
+      { transform: 'translate(0)' },
+      { transform: 'translate(100px, 100px)' },
+    ], {
+      duration: 1000,
+      iterations: Infinity,
+      direction: "alternate",
+    });
+  </script>
+</body>
+</html>
