@@ -40,16 +40,10 @@
   </div>
 
   <script>
-    let flag = false;
     const element = document.getElementById('box');
 
     element.addEventListener('click', () => {
-      if (flag) {
-        element.classList.remove('move');
-      } else {
-        element.classList.add('move');
-      }
-      flag = !flag;
+      element.classList.toggle('move');
     })
   </script>
 </body>
