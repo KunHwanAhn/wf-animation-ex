@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>requestAnimationFrame()</title>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .block {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      background-color: tomato;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="block" class="block">
+      BLOCK
+    </div>
+  </div>
+
+  <script>
+    // https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame#Notes
+    var start = null;
+    var count = 0;
+    var element = document.getElementById('block');
+    element.style.position = 'absolute';
+
+    function step(timestamp) {
+      count++;
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      element.style.left = Math.min(progress / 10, 200) + 'px';
+      if (progress < 2000) {
+        window.requestAnimationFrame(step);
+      } else {
+        console.log(`Count >> ${count}`)
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  </script>
+</body>
+</html>
